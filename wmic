@@ -1,7 +1,17 @@
-cls && echo --- Motherboard Info --- && wmic baseboard get product,manufacturer,version,serialnumber && echo. 
-echo --- CPU Info --- && wmic cpu get name,manufacturer,caption,numberofcores,maxclockspeed,serialnumber && echo.
-echo --- Memory Info --- && wmic memorychip get capacity,speed,manufacturer,partnumber,serialnumber && echo.
-echo --- Disk Drive Info --- && wmic diskdrive get model,manufacturer,serialnumber,size,mediatype && echo.
-echo --- Graphics Card Info --- && wmic path win32_videocontroller get caption,deviceid,adapterram,driverversion && echo.
-echo --- Logical Disks Info --- && wmic logicaldisk get caption,filesystem,size,freespace && echo.
-echo --- BIOS Info --- && wmic bios get manufacturer,version,releaseDate && echo.
+@echo off
+echo.
+echo Processor Info:
+wmic cpu get Name, Manufacturer, MaxClockSpeed
+
+echo.
+echo Display Adapters Info:
+wmic path win32_videocontroller get caption
+
+echo.
+echo Baseboard Product Info:
+for /f "tokens=2 delims==" %%I in ('wmic baseboard get product /value') do set baseboard=%%I
+echo %baseboard%
+
+echo.
+pause >nul
+exit
