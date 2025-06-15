@@ -1,0 +1,7 @@
+cls && echo --- Motherboard Info --- && wmic baseboard get product,manufacturer,version,serialnumber && echo. 
+echo --- CPU Info --- && wmic cpu get name,manufacturer,caption,numberofcores,maxclockspeed,serialnumber && echo.
+echo --- Memory Info --- && wmic memorychip get capacity,speed,manufacturer,partnumber,serialnumber && echo.
+echo --- Disk Drive Info --- && wmic diskdrive get model,manufacturer,serialnumber,size,mediatype && echo.
+echo --- Graphics Card Info --- && wmic path win32_videocontroller get caption,deviceid,adapterram,driverversion && echo.
+echo --- Logical Disks Info --- && wmic logicaldisk get caption,filesystem,size,freespace && echo.
+echo --- BIOS Info --- && wmic bios get manufacturer,version,releaseDate && echo.
